@@ -14,7 +14,7 @@ export default function(size, name){
     }
 
     if(!participant) return <noscript/>;
-    return <AvatarImage email={participant.email} name={participant.name} className='thread-avatar' size={size} round={true}/>
+    return <AvatarImage email={participant.email} name={participant.name} className='thread-avatar' size={size} round={false}/>
   }
   Avatar.displayName=name;
   return Avatar;

@@ -42,7 +42,7 @@ const AvatarImage = React.createClass({
   getClearbitURL: function(email, size, cb, tryNext)
   {
     var base = "logo.clearbit.com/<%=domain%>";
-  
+
     var domain;
     if( email.indexOf('@') > -1 ) domain = email.split('@')[1];
     var prefix = this.getProtocol() === 'https:' ? 'https://secure.' : 'http://';
@@ -293,35 +293,41 @@ const AvatarImage = React.createClass({
   },
   getVisual: function() {
 
-    var imageStyle = {
-      maxWidth: '100%',
+    var containerStyle = {
       width: this.props.size,
       height: this.props.size,
-      borderRadius: (this.props.round ? 500 : 0)
+      borderRadius: 5,
+      overflow: 'hidden',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
     };
 
-    var initialsStyle = {
+    var imageStyle = {
+      maxWidth: '100%',
+    };
+
+    var initialsStyle = Object.assign({}, containerStyle, {
       background: this.props.color || this.rndColor(),
-      width: this.props.size,
-      height: this.props.size,
       font: Math.floor(this.props.size/3) + 'px/100px',
       color: this.props.fgColor,
       textAlign: 'center',
       textTransform: 'uppercase',
       lineHeight: (this.props.size + Math.floor(this.props.size/10)) + 'px',
-      borderRadius: (this.props.round ? 500 : 0)
-    };
+    });
 
     if(this.state.src) {
       return (
         /* jshint ignore:start */
-        <img width={ this.props.size } height={ this.props.size } style={ imageStyle } src={ this.state.src } onError={ this.fetch } />
+        <div className="thread-avatar-container" style={containerStyle}>
+          <img style={ imageStyle } src={ this.state.src } onError={ this.fetch } />
+        </div>
         /* jshint ignore:end */
       );
     } else {
       return (
         /* jshint ignore:start */
-        <div style={ initialsStyle }>{ this.state.value }</div>
+        <div className="thread-avatar-container" style={ initialsStyle }>{ this.state.value }</div>
         /* jshint ignore:end */
       );
     }

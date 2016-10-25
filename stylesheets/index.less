@@ -1,3 +1,14 @@
+.thread-avatar-container:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  box-shadow: inset 0 0 1px rgba(0,0,0,0.2);
+  border-radius: 5px;
+}
+
 .message-subject-wrap, .thread-list-wide .list-column-Message {
   .thread-avatar{
     display: none !important;
@@ -16,8 +27,8 @@
     .thread-avatar{
       margin: 1px;
       position: fixed !important;
-      top: 0px;
-      left: 5px;
+      top: 10px;
+      left: 10px;
       transform: translate3d(0, 0px, 0px) scale(1);
       transition: all .2s cubic-bezier(0.35, 0.91, 0.41, 0.99);
     }
@@ -32,18 +43,18 @@
   .icons-column{
     width: 45px;
     left: 5px;
-    top: 50px;
+    top: 55px;
     flex-direction: row;
     position: absolute;
     margin-right: 0;
   }
 
-  .list-tabular .list-column.list-column-Item{ 
+  .list-tabular .list-column.list-column-Item{
     padding-left: 20px;
   }
 
   .subject, .participants-wrapper, .snippet-and-labels {
-    margin-left: 55px;
+    margin-left: 40px;
   }
 
 }
